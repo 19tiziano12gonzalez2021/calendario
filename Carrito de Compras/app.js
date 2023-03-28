@@ -1,59 +1,67 @@
-// Obtener los elementos HTML necesarios
 const productsContainer = document.querySelector('.products');
 const cartTable = document.querySelector('.cart table');
 const totalElement = document.querySelector('.total');
 const buyBtns = document.querySelectorAll('.buy-btn');
 
-// variable productos
 
 const productos = [
   {
-    titulo: "chupetin simple",
+    nombre: "chupetin simple",
     descripcion: "chupetin sin chicle (manzana, naranja, frutilla, cereza)",
-    precio: 15
+    precio: 15.00
   },
   {
-    titulo: "chupetin con chicle",
+    nombre: "chupetin con chicle",
     descripcion: "chupetin con chicle (cereza, strewberry)",
-    precio: 30
+    precio: 30.00
   },
   {
-    titulo: "turron",
+    nombre: "turron",
     descripcion: "turron con galleta (arcor)",
-    precio: 40
+    precio: 40.00
   },
   {
-    titulo: "alfajor tatin simple",
+    nombre: "alfajor tatin simple",
     descripcion: "alfajor pequeño de chocolate (blanco y negro)",
-    precio: 50
+    precio: 50.00
   },
   {
-    titulo: "alfajor guaymallen",
+    nombre: "alfajor guaymallen",
     descripcion: "algajor triple (blanco, negro, membrillo)",
-    precio: 80
+    precio: 80.00
   },
   {
-    titulo: "chocolate block",
+    nombre: "chocolate block",
     descripcion: "chocolate block chico (25gr)",
-    precio: 120
-  },
-]
+    precio: 120.00
+  }
+];
 
+const contenedorProductos = document.querySelector('.products');
 
+productos.forEach(producto => {
+  const divProducto = document.createElement('div');
+  divProducto.classList.add('product');
+  divProducto.innerHTML = `
+    <h2>${producto.nombre}</h2>
+    <p>${producto.descripcion}</p>
+    <p>Precio: $${producto.precio.toFixed(2)}</p>
+    <button class="buy-btn" data-name="${producto.nombre}" data-price="${producto.precio}">Comprar</button>
+  `;
+  contenedorProductos.appendChild(divProducto);
+});
 
-// Obtener el carrito de compras de LocalStorage o crear uno nuevo
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Función para agregar un producto al carrito de compras
 function addToCart(product) {
-  // Buscar si el producto ya está en el carrito
+
   const index = cart.findIndex(item => item.name === product.name);
 
   if (index !== -1) {
-    // Si el producto ya está en el carrito, aumentar la cantidad
+
     cart[index].quantity++;
   } else {
-    // Si el producto no está en el carrito, agregarlo
+
     cart.push({
       name: product.name,
       description: product.description,
@@ -62,19 +70,18 @@ function addToCart(product) {
     });
   }
 
-  // Guardar el carrito de compras actualizado en LocalStorage
+
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Función para actualizar el carrito de compras en la página
+
 function updateCart() {
   // Limpiar la tabla de carrito de compras
   cartTable.innerHTML = '<tr><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Total</th></tr>';
 
-  // Calcular el total de la compra
+
   let total = 0;
 
-  // Recorrer los productos en el carrito y agregarlos a la tabla
   cart.forEach(item => {
     const price = parseFloat(item.price);
     const quantity = item.quantity;
@@ -91,11 +98,11 @@ function updateCart() {
     `;
   });
 
-  // Actualizar el total en la página
+
   totalElement.innerHTML = `Total: $${total.toFixed(2)}`;
 }
 
-// Agregar un event listener para cada botón de compra
+
 buyBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const product = {
@@ -109,30 +116,23 @@ buyBtns.forEach(btn => {
   });
 });
 
-// función para vaciar el carrito
+
 function clearCart() {
-  // vaciar el array de productos en el carrito
+
   cart = [];
 
-  // guardar el carrito vacío en localStorage
+
   localStorage.setItem('cart', JSON.stringify(cart));
 
-  // actualizar la interfaz de usuario
+
   updateCart();
   updateCartTotal();
 }
 
-// obtener el botón de vaciar carrito
+
 const clearCartButton = document.getElementById('clear-cart-button');
 
-// agregar un listener de eventos al botón
 clearCartButton.addEventListener('click', clearCart)
 
-// Actualizar el carrito de compras al cargar la página
 updateCart();
 
-console.log(productos)
-
-productos.forEach(element => {
-  console.log(element.titulo,element.precio)
-});
