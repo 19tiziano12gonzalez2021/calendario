@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Carrito de compras</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Carrito de compras</h1>
+		<div class="products">
+			<div class="product">
+				<h2>chupetin simple</h2>
+				<p>chupetin sin chicle (manzana, naranja, frutilla, cereza).</p>
+				<p>Precio: $15.00</p>
+				<button class="buy-btn" data-name="chupetin simple" data-price="10.00" data-id="1">Comprar</button>
+			</div>
+			<div class="product">
+				<h2>chupetin con chicle</h2>
+				<p>chupetin con chicle (cereza, strewberry)</p>
+				<p>Precio: $30</p>
+				<button class="buy-btn" data-name="chupetin con chicle" data-price="15.00" data-id="2">Comprar</button>
+			</div>
+			<div class="product">
+				<h2>turron</h2>
+				<p>turron con galleta (arcor)</p>
+				<p>Precio: $40.00</p>
+				<button class="buy-btn" data-name="turron con galleta (arcor)" data-price="20.00" data-id="3">Comprar</button>
+			</div>
+			<div class="product">
+				<h2>alfajor tatin simple</h2>
+				<p>alfajor pequeño de chocolate (blanco y negro)</p>
+				<p>Precio: $50.00</p>
+				<button class="buy-btn" data-name="alfajor tatin simple" data-price="25.00" data-id="4">Comprar</button>
+			</div>
+			<div class="product">
+				<h2>alfajor guaymallen</h2>
+				<p>algajor triple (blanco, negro, membrillo).</p>
+				<p>Precio: $80.00</p>
+				<button class="buy-btn" data-name="alfajor guaymallen" data-price="30.00" data-id="5">Comprar</button>
+			</div>
+			<div class="product">
+				<h2>chocolate block</h2>
+				<p>chocolate block chico (25gr).</p>
+				<p>Precio: $120.00</p>
+				<button class="buy-btn" data-name="chocolate block" data-price="35.00" data-id="6">Comprar</button>
+			</div>
+		</div>
+		<div class="cart">
+			<h2>Carrito de compras</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Producto</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<div class="total">
+				<p>Total: $0.00</p>
+			</div>
+		
+		</div>
+	</div>
+	<div><button class="buy-btn" id="clear-cart-button">Vaciar carrito</button></div>
+	<script src="app.js"></script>
+</body>
+</html>
+
