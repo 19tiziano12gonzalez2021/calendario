@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>calendario 2023</title>
+</head>
+<body>
+    <div>
+        <h1>calendario</h1>
+    </div>
+        <h3>FECHA:</h3>
+        <input type="date" name="fecha" id="fecha">
+        <h3>HORA</h3>
+        <input type="time" name="hora" id="hora">
+        <h3>TÍTULO</h3>
+        <input type="text" name="titulo" id="titulo">
+        <h3>DESCRIPCIÓN</h3>
+        <textarea name="descripcion" id="descripcion" cols="30" rows="5"></textarea>
+        <input type="button" value="Agregar" onclick="agregarTarea()">
+    </div>
+    <div>
+        <input type="button" name="mostrar" id="mostrarLista" value="mostrar lista de tareas" onclick="mostrarLista()">
+        <ul id="lista"></ul>
+    </div>
+
+    <script src="scripted.js"></script>
+</body>
+</html>
